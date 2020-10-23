@@ -1,93 +1,80 @@
-![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
 
 # MongoDB | Compass CRUD
 
-## Introduction
+## Introdução
 
-We are back with our queries! :wink:
+Estamos de volta com nossas queries! :wink:
 
-We have learned some super useful query operators, that will helps us to make much better queries to retrieve the data we need. We will continue using the **Crunchbase** database we used on the last exercise.
-
-
-## Requirements
-
-- Fork this repo
-- Clone this repo
+Aprendemos alguns operadores de consulta superúteis, que nos ajudam a fazer consultas muito melhores para recuperar os dados de que precisamos. Continuaremos usando o banco de dados ** Crunchbase **.
 
 
-## Submission
+## Requisitos
 
-- Upon completion, run the following commands
-```
-$ git add .
-$ git commit -m "done"
-$ git push origin master
-```
-- Create Pull Request so your TAs can check up your work.
+- Fork este repositório
+- Clone este repositório
 
 
-## Deliverables
+## Entregáveis
 
-Since we will be querying our database from Mongo Compass, you will need to copy/paste the `query`, `projection`, `sort`, `skip` and `limit` you entered on Mongo Compass. In the `queries.md` file, you will find the instructions about the queries you need to do, and a field to fill the answers.
+Uma vez que iremos consultar nosso banco de dados do Mongo Compass, você precisará copiar / colar o `query`,` projection`, `sort`,` skip` e `limit` que você inseriu no Mongo Compass. No arquivo `queries.md`, você encontrará as instruções sobre as consultas que você precisa fazer, e um campo para preencher as respostas.
 
-### Example
+### Exemplo
 
-1. This is an example
- - **`query`**: /*You should copy/paste the query in here*/
- - **`projection`**: /*You should copy/paste the projection in here*/
- - **`sort`**: /*You should copy/paste the sort in here*/
- - **`skip`**: /*You should copy/paste the skip in here*/
- - **`limit`**: /*You should copy/paste the limit in here*/
+1. Este é um exemplo
+  - ** `query` **: / * Você deve copiar / colar a consulta aqui * /
+  - ** `projeção` **: / * Você deve copiar / colar a projeção aqui * /
+  - ** `sort` **: / * Você deve copiar / colar a classificação aqui * /
+  - ** `skip` **: / * Você deve copiar / colar o salto aqui * /
+  - ** `limit` **: / * Você deve copiar / colar o limite aqui * /
 
-## Instructions
+## Instruções
 
-### Iteration 1
+### Iteração 1
 
-First, we need to import the database we will be using for the `lab`. We will use the Crunchbase database. Crunchbase is the premier destination for discovering industry trends, investments, and news about hundreds of thousands of companies globally. From startups to Fortune 500s, Crunchbase is recognized as the primary source of company intelligence by millions of users globally.
+Primeiro, precisamos importar o banco de dados que usaremos para o `lab`. Usaremos o banco de dados Crunchbase. Crunchbase é o principal destino para descobrir tendências do setor, investimentos e notícias sobre centenas de milhares de empresas em todo o mundo. De startups a Fortune 500s, a Crunchbase é reconhecida como a principal fonte de inteligência empresarial por milhões de usuários em todo o mundo.
 
-The database contains more than 18k documents, and each of them has a lot of information about each of the companies. A document looks like the following:
+O banco de dados contém mais de 18 mil documentos, sendo que cada um deles contém muitas informações sobre cada uma das empresas. Um documento se parece com o seguinte:
 
 ![image](https://user-images.githubusercontent.com/23629340/36494916-d6db1770-1733-11e8-903e-5119b3c1b688.png)
 
-1. You will find the `.zip` file of the Database on the **lab** folder.
-2. Unzip the file
-3. From the terminal, import the database to Mongo using the following command:
+1. Você encontrará o arquivo `.zip` do Banco de Dados na pasta ** lab **.
+2. Descompacte o arquivo
+3. No terminal, importe o banco de dados para o Mongo usando o seguinte comando:
 ```bash
 $ mongoimport --db companies --collection companies --file companies.json
 ```
-4. Check on Mongo Compass if everything goes ok:
+4. Verifique no Mongo Compass se está tudo bem:
 
 :::info >
-When running the `mongoimport` you should be located in the same folder as the `companies.json` file.
+Ao executar o `mongoimport`, você deve estar localizado na mesma pasta que o arquivo` companies.json`.
 :::
 
 ![image](https://user-images.githubusercontent.com/23629340/36534191-1f1bc5ec-17c6-11e8-9463-4945679b98c0.png)
 
 
-### Iteration 2
+### Iteração 2
 
-You already know how this goes, so let's start working:
+Você já sabe como funciona, então vamos começar a trabalhar:
 
-1. All the companies that it's name match 'Babelgum'. Retrieve only their `name` field.
-2. All the companies that have more than 5000 employees. Limit the search to 20 companies and sort them by **number of employees**.
-3. All the companies founded between 2000 and 2005, both years included. Retrieve only the `name` and `founded_year` fileds.
-4. All the companies that had a Valuation Amount of more than 100.000.000 and have been founded before 2010. Retrieve only the `name` and `ipo` fields.
-5. All the companies that have less than 1000 employees and have been founded before 2005. Order them by the number of employees and limit the search to 10 companies.
-6. All the companies that don't include the `partners` field.
-7. All the companies that have a null type of value on the `category_code` field.
-8. All the companies that have at least 100 employees but less than 1000. Retrieve only the `name` and `number of employees` fields.
-9. Order all the companies by their IPO price descendently.
-10. Retrieve the 10 companies with more employees, order by the `number of employees`
-11. All the companies founded on the second semester of the year. Limit your search to 1000 companies.
-12. All the companies that have been 'deadpooled' after the third year.
-13. All the companies founded before 2000 that have and acquisition amount of more than 10.000.000
-14. All the companies that have been acquired after 2015, order by the acquisition amount, and retrieve only their `name` and `acquisiton` field.
-15. Order the companies by their `founded year`, retrieving only their `name` and `founded year`.
-16. All the companies that have been founded on the first seven days of the month, including the seventh. Sort them by their `aquisition price` descendently. Limit the search to 10 documents.
-17. All the companies on the 'web' `category` that have more than 4000 employees. Sort them by the amount of employees in ascendant order.
-18. All the companies which their acquisition amount is more than 10.000.000, and currency are 'EUR'.
-19. All the companies that have been acquired on the first trimester of the year. Limit the search to 10 companies, and retrieve only their `name` and `acquisition` fields.
-20. All the companies that have been founded between 2000 and 2010, but have not been acquired before 2011.
-
+1. Todas as empresas cujo nome corresponde a 'Babelgum'. Recupere apenas o campo `nome`.
+2. Todas as empresas com mais de 5.000 funcionários. Limite a pesquisa a 20 empresas e classifique-as por ** número de funcionários **.
+3. Todas as empresas fundadas entre 2000 e 2005, ambos os anos incluídos. Recupere apenas os campos `name` e` found_year`.
+4. Todas as empresas que tiveram um Valor de Avaliação superior a 100.000.000 e foram fundadas antes de 2010. Recupere apenas os campos `nome` e ʻipo`.
+5. Todas as empresas que tenham menos de 1000 funcionários e tenham sido fundadas antes de 2005. Ordene-as pelo número de funcionários e limite a pesquisa a 10 empresas.
+6. Todas as empresas que não incluem o campo `sócios`.
+7. Todas as empresas que possuem um tipo nulo de valor no campo `category_code`.
+8. Todas as empresas que têm pelo menos 100 funcionários, mas menos de 1000. Recupere apenas os campos `nome` e` número de funcionários`.
+9. Ordene todas as empresas pelo preço de IPO de forma descendente.
+10. Recupere as 10 empresas com mais funcionários, ordenado pelo `número de funcionários`
+11. Todas as empresas constituídas no segundo semestre do ano. Limite sua pesquisa a 1000 empresas.
+12. Todas as empresas que foram 'deadpool' após o terceiro ano.
+13. Todas as empresas fundadas antes de 2000 que tenham um valor de aquisição superior a 10.000.000
+14. Todas as empresas adquiridas após 2015, ordenam pelo valor de aquisição e recuperam apenas os campos `nome` e` aquisição`.
+15. Ordene as empresas por seu `ano de fundação`, recuperando apenas seu` nome` e `ano de fundação`.
+16. Todas as empresas constituídas nos primeiros sete dias do mês, incluindo o sétimo. Classifique-os por seu "preço de aquisição" de forma descendente. Limite a pesquisa a 10 documentos.
+17. Todas as empresas da categoria «web» com mais de 4000 empregados. Classifique-os pela quantidade de funcionários em ordem crescente.
+18. Todas as empresas cujo valor de aquisição seja superior a 10.000.000 e a moeda seja 'EUR'.
+19. Todas as empresas adquiridas no primeiro trimestre do ano. Limite a pesquisa a 10 empresas e recupere apenas os campos `nome` e` aquisição`.
+20. Todas as empresas que foram fundadas entre 2000 e 2010, mas não foram adquiridas antes de 2011.
 
 Happy Coding! :heart:
